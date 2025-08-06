@@ -24,11 +24,12 @@ function App() {
     setIsLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/ask", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/ask`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userInput }),
       });
+      
 
       const data = await res.json();
       const sherlockReply = { sender: "Sherlock", text: data.reply };
